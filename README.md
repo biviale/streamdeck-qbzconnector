@@ -26,8 +26,8 @@ correctly on QBZ.
 ### With OpenDeck
 
 ```bash
-git clone https://github.com/biviale/opendeck-qbzconnector.git
-cd opendeck-qbzconnector
+git clone https://github.com/biviale/streamdeck-qbzconnector.git
+cd streamdeck-qbzconnector
 ./scripts/install.sh --restart
 ```
 
