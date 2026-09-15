@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Play / Pause</title>
+		<link rel="stylesheet" href="pi.css" />
+		<script src="pi.js"></script>
+	</head>
+	<body>
+		<div class="row check">
+			<label for="showArtwork">Cover art</label>
+			<span><input id="showArtwork" type="checkbox" data-setting="showArtwork" /> show in background</span>
+		</div>
+
+		<p class="note">
+			The cover replaces the key's icon. A play or pause <strong>badge</strong> is drawn in the
+			corner so the state stays readable. With no cover available, the key falls back to its
+			normal icon.
+		</p>
+
+		<hr />
+		<div class="row check">
+			<label for="tintFromArtwork">Colour</label>
+			<span
+				><input id="tintFromArtwork" type="checkbox" data-global="tintFromArtwork" /> tint from the
+				cover</span
+			>
+		</div>
+		<p class="note">
+			<strong>Global</strong> setting: it applies to every QBZ Connector key. The cover's dominant
+			colour is darkened as much as it takes for the symbols to stay readable.
+		</p>
+	</body>
+</html>

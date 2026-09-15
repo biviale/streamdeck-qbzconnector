@@ -1,0 +1,35 @@
+[package]
+name = "qbzconnector"
+version = "0.1.0"
+edition = "2021"
+description = "OpenDeck / OpenAction plugin for the QBZ Qobuz desktop client"
+authors = ["biviale"]
+license = "MIT"
+
+[[bin]]
+name = "qbzconnector"
+path = "src/main.rs"
+
+[dependencies]
+openaction = "2.7"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time", "net", "io-util"] }
+zbus = { version = "5", default-features = false, features = ["tokio"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+log = "0.4"
+simplelog = "0.12"
+dirs = "6"
+futures-util = { version = "0.3.34", default-features = false, features = ["std"] }
+notify = "8.2.0"
+image = { version = "0.25.10", default-features = false, features = ["jpeg", "png"] }
+base64 = "0.23.1"
+reqwest = { version = "0.13.5", default-features = false, features = ["rustls", "http2", "charset", "json", "query"] }
+md-5 = "0.11.0"
+urlencoding = "2.1.3"
+rand = "0.10.2"
+keyring = "4.2.0"
+
+[profile.release]
+strip = true
+lto = "thin"
+codegen-units = 1

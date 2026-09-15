@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>QBZ volume</title>
+		<link rel="stylesheet" href="pi.css" />
+		<script src="pi.js"></script>
+	</head>
+	<body>
+		<div class="row">
+			<label for="curve">Curve</label>
+			<select id="curve" data-setting="curve">
+				<option value="linear">Linear (like QBZ)</option>
+				<option value="perceptual">Perceptual (dB)</option>
+			</select>
+		</div>
+
+		<div class="row" id="row-linear">
+			<label for="stepPercent">Step</label>
+			<input id="stepPercent" type="number" min="0.5" max="50" step="0.5" data-setting="stepPercent" />
+		</div>
+
+		<div class="row" id="row-perceptual">
+			<label for="stepDb">Step</label>
+			<input id="stepDb" type="number" min="0.5" max="12" step="0.5" data-setting="stepDb" />
+		</div>
+
+		<p class="note" id="curve-note"></p>
+
+		<div class="row check">
+			<label for="showPercent">Title</label>
+			<span><input id="showPercent" type="checkbox" data-setting="showPercent" /> show the level</span>
+		</div>
+
+		<hr />
+		<p class="note">
+			<strong>Long press</strong>: re-reads the level QBZ saved to disk. Use it if the display has
+			drifted after changing the volume with QBZ's own keyboard shortcuts.
+		</p>
+
+
+		<hr />
+		<div class="row check">
+			<label for="tintFromArtwork">Colour</label>
+			<span
+				><input id="tintFromArtwork" type="checkbox" data-global="tintFromArtwork" /> tint from the
+				cover</span
+			>
+		</div>
+		<p class="note">
+			<strong>Global</strong> setting: it applies to every QBZ Connector key. The cover's dominant
+			colour is darkened as much as it takes for the symbols to stay readable.
+		</p>
+		<script>
+			const linearRow = document.getElementById("row-linear");
+			const perceptualRow = document.getElementById("row-perceptual");
+			const note = document.getElementById("curve-note");
+
+			PI.onSettings((settings) => {
+				const perceptual = settings.curve === "perceptual";
+				linearRow.hidden = perceptual;
+				perceptualRow.hidden = !perceptual;
+				note.innerHTML = perceptual
+					? "Each step multiplies the volume, so it sounds the same at the top and bottom of the range."
+					: "Each step adds or removes a fixed number of points. QBZ's gain being linear, a 5-point step is huge at low levels.";
+			});
+		</script>
+	</body>
+</html>

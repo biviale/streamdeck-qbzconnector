@@ -1,0 +1,164 @@
+{
+	"Name": "QBZ Connector",
+	"Author": "biviale",
+	"Version": "0.1.0",
+	"Icon": "icons/icon",
+	"Category": "QBZ Connector",
+	"CategoryIcon": "icons/icon",
+	"OS": [{ "Platform": "linux" }],
+	"CodePathLin": "qbzconnector",
+	"CodePaths": {
+		"x86_64-unknown-linux-gnu": "qbzconnector",
+		"aarch64-unknown-linux-gnu": "qbzconnector"
+	},
+	"ApplicationsToMonitor": {
+		"linux": ["qbz"]
+	},
+	"Actions": [
+		{
+			"UUID": "com.biviale.qbzconnector.playpause",
+			"Name": "Play / Pause",
+			"Tooltip": "Toggle QBZ playback",
+			"Icon": "icons/playpause",
+			"PropertyInspectorPath": "pi/playpause.html",
+			"Controllers": ["Keypad"],
+			"DisableAutomaticStates": true,
+			"States": [
+				{ "Image": "icons/play", "Name": "Paused" },
+				{ "Image": "icons/pause", "Name": "Playing" }
+			]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.next",
+			"Name": "Next track",
+			"Tooltip": "Skip to the next track",
+			"Icon": "icons/next",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "icons/next" }]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.previous",
+			"Name": "Previous track",
+			"Tooltip": "Go back to the previous track",
+			"Icon": "icons/previous",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "icons/previous" }]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.stop",
+			"Name": "Stop",
+			"Tooltip": "Stop playback",
+			"Icon": "icons/stop",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "icons/stop" }]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.seekforward",
+			"Name": "Forward",
+			"Tooltip": "Seek forward in the track",
+			"Icon": "icons/seek",
+			"PropertyInspectorPath": "pi/seek.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "icons/seek" }]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.seekbackward",
+			"Name": "Back",
+			"Tooltip": "Seek back in the track",
+			"Icon": "icons/seek_backwards",
+			"PropertyInspectorPath": "pi/seek.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "icons/seek_backwards" }]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.volumeup",
+			"Name": "Volume +",
+			"Tooltip": "Raise QBZ's in-app volume",
+			"Icon": "icons/volume_up",
+			"PropertyInspectorPath": "pi/volume.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "icons/volume_up", "TitleAlignment": "bottom", "FontSize": "14" }]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.volumedown",
+			"Name": "Volume −",
+			"Tooltip": "Lower QBZ's in-app volume",
+			"Icon": "icons/volume_down",
+			"PropertyInspectorPath": "pi/volume.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "icons/volume_down", "TitleAlignment": "bottom", "FontSize": "14" }]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.volumeset",
+			"Name": "Volume — fixed level",
+			"Tooltip": "Set QBZ's volume to an exact level",
+			"Icon": "icons/volume_set",
+			"PropertyInspectorPath": "pi/volumeset.html",
+			"Controllers": ["Keypad"],
+			"States": [{ "Image": "icons/volume_set", "TitleAlignment": "bottom", "FontSize": "14" }]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.mute",
+			"Name": "Mute",
+			"Tooltip": "Mute or unmute QBZ",
+			"Icon": "icons/muted",
+			"Controllers": ["Keypad"],
+			"DisableAutomaticStates": true,
+			"States": [
+				{ "Image": "icons/volume", "Name": "Sound on" },
+				{ "Image": "icons/muted", "Name": "Muted" }
+			]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.volume",
+			"Name": "Volume (dial)",
+			"Tooltip": "Dial: turn for volume, press to mute",
+			"Icon": "icons/volume",
+			"PropertyInspectorPath": "pi/volume.html",
+			"Controllers": ["Encoder"],
+			"SupportedInMultiActions": false,
+			"Encoder": {
+				"Icon": "icons/volume",
+				"StackColor": "#0F3D5C",
+				"layout": "$B1",
+				"TriggerDescription": {
+					"Rotate": "Volume",
+					"Push": "Mute",
+					"Touch": "Mute",
+					"LongTouch": "Volume to 0"
+				}
+			},
+			"States": [{ "Image": "icons/volume" }]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.favorite",
+			"Name": "Favourite",
+			"Tooltip": "Add or remove the current track from your Qobuz favourites",
+			"Icon": "icons/favorite_on",
+			"PropertyInspectorPath": "pi/favorite.html",
+			"Controllers": ["Keypad"],
+			"DisableAutomaticStates": true,
+			"States": [
+				{ "Image": "icons/favorite_disabled", "Name": "Unavailable" },
+				{ "Image": "icons/favorite_off", "Name": "Not a favourite" },
+				{ "Image": "icons/favorite_on", "Name": "Favourited" }
+			]
+		},
+		{
+			"UUID": "com.biviale.qbzconnector.nowplaying",
+			"Name": "Now playing",
+			"Tooltip": "Cover art and title of the current track",
+			"Icon": "icons/nowplaying",
+			"PropertyInspectorPath": "pi/nowplaying.html",
+			"Controllers": ["Keypad"],
+			"States": [
+				{
+					"Image": "icons/nowplaying",
+					"TitleAlignment": "bottom",
+					"FontSize": "10",
+					"ShowTitle": true
+				}
+			]
+		}
+	]
+}

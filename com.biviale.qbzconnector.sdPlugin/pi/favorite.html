@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Qobuz favourite</title>
+		<link rel="stylesheet" href="pi.css" />
+		<script src="pi.js"></script>
+	</head>
+	<body>
+		<p class="status" id="status">Checking the session…</p>
+
+		<div class="row">
+			<label></label>
+			<span>
+				<button id="login" type="button">Sign in to Qobuz</button>
+				<button id="logout" type="button" hidden>Sign out</button>
+			</span>
+		</div>
+
+		<p class="note">
+			The plugin uses its <strong>own</strong> Qobuz session: QBZ encrypts its own, which cannot be
+			reused. The token is kept in the system keyring (KWallet), never in OpenDeck's
+			configuration.
+		</p>
+		<p class="note">
+			Qobuz has no notion of a dislike: this key adds or removes favourites.
+		</p>
+
+
+		<hr />
+		<div class="row check">
+			<label for="tintFromArtwork">Colour</label>
+			<span
+				><input id="tintFromArtwork" type="checkbox" data-global="tintFromArtwork" /> tint from the
+				cover</span
+			>
+		</div>
+		<p class="note">
+			<strong>Global</strong> setting: it applies to every QBZ Connector key. The cover's dominant
+			colour is darkened as much as it takes for the symbols to stay readable.
+		</p>
+		<script>
+			const statusEl = document.getElementById("status");
+			const loginBtn = document.getElementById("login");
+			const logoutBtn = document.getElementById("logout");
+
+			loginBtn.addEventListener("click", () => {
+				loginBtn.disabled = true;
+				statusEl.textContent = "Sign-in opened in your browser…";
+				PI.sendToPlugin({ action: "login" });
+			});
+
+			logoutBtn.addEventListener("click", () => {
+				PI.sendToPlugin({ action: "logout" });
+			});
+
+			PI.onFromPlugin((status) => {
+				loginBtn.disabled = false;
+				if (status.error) {
+					statusEl.textContent = "Failed: " + status.error;
+				} else if (status.authenticated) {
+					const who = status.displayName || "your Qobuz account";
+					statusEl.textContent =
+						"Signed in as " + who + " — " + status.favoriteCount + " favourite tracks.";
+				} else {
+					statusEl.textContent = "Not signed in yet.";
+				}
+				loginBtn.hidden = status.authenticated;
+				logoutBtn.hidden = !status.authenticated;
+			});
+		</script>
+	</body>
+</html>

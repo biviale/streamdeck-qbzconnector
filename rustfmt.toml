@@ -1,0 +1,3 @@
+# Tabs, like the openaction crate this plugin is built on.
+hard_tabs = true
+max_width = 110

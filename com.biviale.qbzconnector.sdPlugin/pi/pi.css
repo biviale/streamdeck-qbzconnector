@@ -1,0 +1,115 @@
+/* Property inspector styling.
+   Both colour schemes are defined because the inspector is embedded in
+   OpenDeck's own page, whose theme follows the system. */
+:root {
+	color-scheme: light dark;
+	--fg: #1b1d21;
+	--fg-dim: #5c6270;
+	--field-bg: #ffffff;
+	--border: #c6cad3;
+	--accent: #0f3d5c;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--fg: #e6e8ec;
+		--fg-dim: #9aa1ae;
+		--field-bg: #2a2e35;
+		--border: #444a55;
+		--accent: #5aa7d8;
+	}
+}
+
+body {
+	margin: 0;
+	padding: 10px 12px 16px;
+	font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+	color: var(--fg);
+	background: transparent;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 9px;
+}
+
+.row > label {
+	flex: 0 0 38%;
+	text-align: right;
+	color: var(--fg-dim);
+}
+
+.row > :not(label) {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 5px 7px;
+	color: var(--fg);
+	background: var(--field-bg);
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	font: inherit;
+}
+
+input[type="checkbox"] {
+	flex: 0 0 auto;
+	margin: 0;
+	accent-color: var(--accent);
+}
+
+/* A checkbox row reads better with the control next to its own wording. */
+.row.check > label {
+	flex: 0 0 38%;
+}
+
+.row.check > span {
+	color: var(--fg);
+}
+
+button {
+	padding: 6px 12px;
+	color: #fff;
+	background: var(--accent);
+	border: 0;
+	border-radius: 4px;
+	font: inherit;
+	cursor: pointer;
+}
+
+button:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+.note {
+	margin: 4px 0 10px;
+	color: var(--fg-dim);
+	font-size: 12px;
+}
+
+.note strong {
+	color: var(--fg);
+	font-weight: 600;
+}
+
+hr {
+	margin: 14px 0 12px;
+	border: 0;
+	border-top: 1px solid var(--border);
+}
+
+.status {
+	margin: 0 0 10px;
+	padding: 7px 9px;
+	border: 1px solid var(--border);
+	border-radius: 4px;
+	background: var(--field-bg);
+}

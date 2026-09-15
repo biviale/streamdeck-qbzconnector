@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Volume — fixed level</title>
+		<link rel="stylesheet" href="pi.css" />
+		<script src="pi.js"></script>
+	</head>
+	<body>
+		<div class="row">
+			<label for="targetPercent">Level</label>
+			<input id="targetPercent" type="number" min="0" max="100" step="1" data-setting="targetPercent" />
+		</div>
+
+		<div class="row check">
+			<label for="showPercent">Title</label>
+			<span><input id="showPercent" type="checkbox" data-setting="showPercent" /> show the level</span>
+		</div>
+
+		<p class="note">
+			This key writes an absolute value, so it <strong>resynchronises</strong> the plugin's display
+			with reality, whatever happened before.
+		</p>
+
+		<hr />
+		<div class="row check">
+			<label for="tintFromArtwork">Colour</label>
+			<span
+				><input id="tintFromArtwork" type="checkbox" data-global="tintFromArtwork" /> tint from the
+				cover</span
+			>
+		</div>
+		<p class="note">
+			<strong>Global</strong> setting: it applies to every QBZ Connector key. The cover's dominant
+			colour is darkened as much as it takes for the symbols to stay readable.
+		</p>
+	</body>
+</html>
