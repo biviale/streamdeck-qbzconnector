@@ -1,5 +1,11 @@
 # QBZ Connector
 
+> **This project is finished and archived.** QBZ is no longer developed, and
+> this plugin will not be updated. It works with **QBZ v2.1.2** only, not with
+> v6.6.6, and v2.1.2 is no longer available for download: the plugin is useful
+> only if you still have that version installed. No fixes are coming. The code
+> stays here under the MIT licence for anyone who wants to fork it.
+
 Control [QBZ](https://github.com/vicrodh/qbz), the desktop Qobuz player for
 Linux from a Stream Deck. QBZ Connector is a plugin for the
 [OpenAction API](https://openaction.amankhanna.me/), so any OpenAction server can load it. It is developed and
@@ -17,9 +23,10 @@ correctly on QBZ.
 
 - Linux, and an OpenAction server. OpenDeck 7.0 or later is the tested one;
   others implementing the API should work but are unverified
-- QBZ installed (`qbz`), signed in to your Qobuz account at least once
+- QBZ v2.1.2 installed (`qbz`), signed in to your Qobuz account at least
+  once. Later versions, v6.6.6 included, are not supported
 - Rust 1.80 or later: the plugin is built from source, there is no
-  prebuilt download yet
+  prebuilt download
 
 ## Install
 
@@ -169,11 +176,6 @@ opportunity:
    slider, which is the main way the value could drift.
 3. **Own** — every write the plugin makes is absolute, so it is exact.
 
-The upstream fix would be a few lines in QBZ's
-`crates/qbz-qt/src/media_controls_qt.rs`, calling `mc.set_volume(...)` on every
-change. It would be worth an issue at
-[vicrodh/qbz](https://github.com/vicrodh/qbz).
-
 </details>
 
 ## Qobuz favourites
@@ -204,6 +206,10 @@ breakage-prone piece of code in the ecosystem, QBZ already maintains it, and
 this plugin is useless without QBZ anyway. If the file is missing, open QBZ and
 sign in once.
 
+Since QBZ is discontinued, those cached credentials will not be refreshed. If
+Qobuz rotates its secrets, the Favourite key will stop working for good. The
+transport and volume keys talk to QBZ locally and do not depend on Qobuz.
+
 ## Known limitations
 
 Most of these are missing because QBZ does not expose them, not by oversight:
@@ -218,7 +224,7 @@ Most of these are missing because QBZ does not expose them, not by oversight:
   and `OpenUrl`, hence the separate Qobuz session.
 - **Stream Deck+ dial support has never run on hardware.** The rotation, press
   and tap handling is implemented, but it was developed on a 15-key Stream Deck
-  MK.2, which has no dial. Treat it as unverified; reports welcome.
+  MK.2, which has no dial. Treat it as unverified.
 
 ## Troubleshooting
 

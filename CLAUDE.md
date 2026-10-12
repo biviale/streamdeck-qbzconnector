@@ -6,6 +6,12 @@ QBZ Connector — an OpenDeck / OpenAction plugin, in Rust, driving the QBZ
 desktop Qobuz client from a Stream Deck. Linux only. User-facing documentation
 is in `README.md`; this file covers what you need to change the code.
 
+## Status
+
+**Frozen.** QBZ is discontinued; the plugin targets QBZ v2.1.2, the last
+version it works with (v6.6.6 is not supported). Do not add features; any
+future change should only keep the build working.
+
 ## Commands
 
 ```bash
